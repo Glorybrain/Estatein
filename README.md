@@ -300,6 +300,7 @@ No rights are granted for commercial use, redistribution, or modification withou
 ## Author
 
 Kotin Glory
+
 Frontend Developer
 
 GitHub: https://github.com/Glorybrain
