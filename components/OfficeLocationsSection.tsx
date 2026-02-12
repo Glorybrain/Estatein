@@ -24,12 +24,14 @@ export type Office = {
     directionHref?: string; // Google maps link
 };
 
+type Tab = { id: OfficeCategory; label: string };
+
 type Props = {
     eyebrowSrc?: string;
     title?: string;
     subtitle?: string;
 
-    tabs?: { id: OfficeCategory; label: string }[];
+    tabs: Tab[];
     offices?: Office[];
 };
 
