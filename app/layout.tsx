@@ -1,11 +1,7 @@
 import "./globals.css";
 import { Urbanist } from "next/font/google";
-import type { Metadata } from "next";
-import Link from "next/link";
-import Image from "next/image";
-import { XMarkIcon } from "@heroicons/react/16/solid";
+import type { Metadata, Viewport } from "next";
 import Banner from "@/components/Banner";
-import { Bars3BottomRightIcon } from "@heroicons/react/16/solid";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
@@ -15,32 +11,100 @@ const urbanist = Urbanist({
   display: "swap",
 });
 
+const SITE_URL = "https://estateiin.netlify.app/";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
+
   title: {
     default: "Estatein",
     template: "%s | Estatein",
   },
-  description: "Find great properties with Estatein.",
-  metadataBase: new URL("https://yourdomain.com"),
+  description:
+    "Estatein is a modern real estate platform to explore properties, compare listings, and view details with confidence.",
+
+  applicationName: "Estatein",
+  generator: "Next.js",
+  referrer: "origin-when-cross-origin",
+
+  keywords: [
+    "Estatein",
+    "real estate",
+    "properties",
+    "property listings",
+    "rent",
+    "buy",
+    "apartments",
+    "houses",
+    "Nigeria real estate",
+  ],
+
+  alternates: {
+    canonical: "/",
+  },
+
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+
   openGraph: {
-    title: "Estatein",
-    description: "Find great properties with Estatein.",
     type: "website",
-    url: "https://yourdomain.com",
+    url: SITE_URL,
+    siteName: "Estatein",
+    title: "Estatein",
+    description:
+      "Explore property listings, view details, and discover your next home with Estatein.",
+    images: [
+      {
+        url: "/hero-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Estatein - Real Estate Platform",
+      },
+    ],
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "Estatein",
+    description:
+      "Explore property listings, view details, and discover your next home with Estatein.",
+    images: ["/hero-image.png"],
+  },
+
+  icons: {
+    icon: "/favicon.ico",
   },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#141414",
+};
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en">
       <body className={`${urbanist.className} bg-grey-8 text-white`}>
         <Banner
           message="✨ Discover Your Dream Property with Estatein"
-          linkText="Learn More"
+          linkText="Browse Properties"
           linkHref="/properties"
         />
         <Navbar />
-
 
         <main className="w-full">{children}</main>
 
