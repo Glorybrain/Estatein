@@ -15,8 +15,69 @@ export default function Hero() {
                 />
             </div>
 
-            <div className="relative z-10 w-full px-4 py-16 mx-auto md:px-6 xl:px-8 lg:w-12/12 xl:w-11/12">
-                <div className="flex flex-col gap-10 lg:flex-row lg:items-center lg:gap-12">
+            <div className="relative z-10 w-full px-4 py-8 mx-auto lg:py-16 md:px-6 xl:px-8 lg:w-12/12 xl:w-11/12">
+                <div className="absolute inset-0 items-center hidden pointer-events-none lg:flex lg:justify-center z-2 lg:items-start lg:pt-12">
+                    <Link
+                        href="/properties"
+                        className="relative block w-24 h-24 transition-transform duration-300 pointer-events-auto group hover:scale-105"
+                    >
+                        <div className="absolute inset-0 rounded-full bg-[#101012] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.08)]" />
+
+                        <div className="absolute inset-[8px] rounded-full bg-[#0F0F10] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.08)]" />
+
+                        <div className="absolute inset-[22px] rounded-full bg-[#0B0B0C] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.08)]" />
+
+                        <div className="absolute inset-0 grid place-items-center">
+                            <svg
+                                className="w-5 h-5 text-white"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                            >
+                                <path
+                                    d="M7 17L17 7"
+                                    stroke="currentColor"
+                                    strokeWidth="2"
+                                    strokeLinecap="round"
+                                />
+                                <path
+                                    d="M9 7H17V15"
+                                    stroke="currentColor"
+                                    strokeWidth="2"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                />
+                            </svg>
+                        </div>
+
+                        <svg
+                            className="absolute inset-0 transition-transform duration-700 group-hover:animate-spin-slow"
+                            viewBox="0 0 100 100"
+                        >
+                            <defs>
+                                <path
+                                    id="circlePath"
+                                    d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0"
+                                />
+                            </defs>
+
+                            <text
+                                fill="white"
+                                fontSize="8"
+                                letterSpacing="3"
+                                className="uppercase"
+                            >
+                                <textPath
+                                    href="#circlePath"
+                                    startOffset="50%"
+                                    textAnchor="middle"
+                                >
+                                    Discover Your Dream Property ✨
+                                </textPath>
+                            </text>
+                        </svg>
+                    </Link>
+                </div>
+                <div className="flex flex-col gap-14 lg:flex-row lg:items-center lg:gap-12">
                     {/* TEXT: always first on mobile */}
                     <div className="order-2 w-full space-y-5 lg:space-y-6 xl:space-y-8 lg:order-0 lg:w-1/2">
                         <div className="space-y-4 lg:space-y-5 xl:space-y-6">
@@ -73,10 +134,144 @@ export default function Hero() {
                     </div>
 
                     {/* MOBILE: Image comes AFTER text */}
-                    <div className="order-1 w-full lg:hidden">
-                        <div className="relative h-[320px] sm:h-[380px] md:h-[440px] rounded-2xl border border-grey-15 bg-grey-10 overflow-hidden">
+                    <div className="relative order-1 hidden w-full md:block lg:hidden">
+                        <div className="absolute inset-0 flex items-end -mb-12 pointer-events-none lg:hidden lg:justify-center z-2 lg:items-start">
+                            <Link
+                                href="/properties"
+                                className="relative block w-24 h-24 transition-transform duration-300 pointer-events-auto group hover:scale-105"
+                            >
+                                <div className="absolute inset-0 rounded-full bg-[#101012] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.08)]" />
+
+                                <div className="absolute inset-[8px] rounded-full bg-[#0F0F10] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.08)]" />
+
+                                <div className="absolute inset-[22px] rounded-full bg-[#0B0B0C] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.08)]" />
+
+                                <div className="absolute inset-0 grid place-items-center">
+                                    <svg
+                                        className="w-5 h-5 text-white"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                    >
+                                        <path
+                                            d="M7 17L17 7"
+                                            stroke="currentColor"
+                                            strokeWidth="2"
+                                            strokeLinecap="round"
+                                        />
+                                        <path
+                                            d="M9 7H17V15"
+                                            stroke="currentColor"
+                                            strokeWidth="2"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                        />
+                                    </svg>
+                                </div>
+
+                                <svg
+                                    className="absolute inset-0 transition-transform duration-700 group-hover:animate-spin-slow"
+                                    viewBox="0 0 100 100"
+                                >
+                                    <defs>
+                                        <path
+                                            id="circlePath"
+                                            d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0"
+                                        />
+                                    </defs>
+
+                                    <text
+                                        fill="white"
+                                        fontSize="8"
+                                        letterSpacing="3"
+                                        className="uppercase"
+                                    >
+                                        <textPath
+                                            href="#circlePath"
+                                            startOffset="50%"
+                                            textAnchor="middle"
+                                        >
+                                            Discover Your Dream Property ✨
+                                        </textPath>
+                                    </text>
+                                </svg>
+                            </Link>
+                        </div>
+                        <div className="relative md:h-[600px] rounded-2xl border border-grey-15 bg-grey-10 overflow-hidden">
                             <Image
-                                src="/mobile-hero-building.png"
+                                src="/hero-building.png"
+                                alt="Estatein building"
+                                fill
+                                className="object-cover"
+                                priority
+                            />
+                        </div>
+                    </div>
+                    <div className="relative order-1 w-full md:hidden">
+                        <div className="absolute inset-0 flex items-end -mb-12 pointer-events-none lg:hidden lg:justify-center z-2 lg:items-start">
+                            <Link
+                                href="/properties"
+                                className="relative block w-24 h-24 transition-transform duration-300 pointer-events-auto group hover:scale-105"
+                            >
+                                <div className="absolute inset-0 rounded-full bg-[#101012] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.08)]" />
+
+                                <div className="absolute inset-[8px] rounded-full bg-[#0F0F10] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.08)]" />
+
+                                <div className="absolute inset-[22px] rounded-full bg-[#0B0B0C] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.08)]" />
+
+                                <div className="absolute inset-0 grid place-items-center">
+                                    <svg
+                                        className="w-5 h-5 text-white"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                    >
+                                        <path
+                                            d="M7 17L17 7"
+                                            stroke="currentColor"
+                                            strokeWidth="2"
+                                            strokeLinecap="round"
+                                        />
+                                        <path
+                                            d="M9 7H17V15"
+                                            stroke="currentColor"
+                                            strokeWidth="2"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                        />
+                                    </svg>
+                                </div>
+
+                                <svg
+                                    className="absolute inset-0 transition-transform duration-700 group-hover:animate-spin-slow"
+                                    viewBox="0 0 100 100"
+                                >
+                                    <defs>
+                                        <path
+                                            id="circlePath"
+                                            d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0"
+                                        />
+                                    </defs>
+
+                                    <text
+                                        fill="white"
+                                        fontSize="8"
+                                        letterSpacing="3"
+                                        className="uppercase"
+                                    >
+                                        <textPath
+                                            href="#circlePath"
+                                            startOffset="50%"
+                                            textAnchor="middle"
+                                        >
+                                            Discover Your Dream Property ✨
+                                        </textPath>
+                                    </text>
+                                </svg>
+                            </Link>
+                        </div>
+                        <div className="relative h-[320px] sm:h-[380px] rounded-2xl border border-grey-15 bg-grey-10 overflow-hidden">
+                            <Image
+                                // src="/mobile-hero-building.png"
+                                src="/hero-building.png"
                                 alt="Estatein building"
                                 fill
                                 className="object-cover"

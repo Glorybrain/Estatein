@@ -4,6 +4,7 @@ import FeaturedPropertiesSection from "@/components/FeaturedPropertiesSection";
 import FeatureStrip from "@/components/FeatureStrip";
 import Hero from "@/components/HomeHero";
 import TestimonialSection from "@/components/TestimonialSection";
+import Link from "next/link";
 
 export default function HomePage() {
   return (

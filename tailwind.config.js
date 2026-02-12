@@ -43,6 +43,10 @@ module.exports = {
       fontFamily: {
         sans: ["Urbanist", "system-ui", "sans-serif"],
       },
+
+      animation: {
+        "spin-slow": "spin 6s linear infinite",
+      },
     },
   },
   plugins: [],
