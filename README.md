@@ -6,7 +6,7 @@ Estatein demonstrates scalable frontend architecture, reusable component design,
 
 ---
 
-## 🚀 Live Demo
+## 🖇️ Live Demo
 
 ```bash
 https://estateiin.netlify.app/
