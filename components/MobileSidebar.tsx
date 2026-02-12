@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, type RefObject } from "react";
 import { createPortal } from "react-dom";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -15,7 +15,7 @@ type MobileSidebarProps = {
 };
 
 function useOutsideClick<T extends HTMLElement>(
-    ref: React.RefObject<T>,
+    ref: RefObject<T>,
     handler: () => void,
     when: boolean
 ) {
@@ -41,7 +41,7 @@ function useOutsideClick<T extends HTMLElement>(
 
 export default function MobileSidebar({ open, onClose, links }: MobileSidebarProps) {
     const pathname = usePathname();
-    const sidebarRef = useRef<HTMLDivElement | null>(null);
+    const sidebarRef = useRef<HTMLDivElement>(null);
 
     useOutsideClick(sidebarRef, onClose, open);
 
@@ -61,17 +61,13 @@ export default function MobileSidebar({ open, onClose, links }: MobileSidebarPro
             className={`fixed inset-0 z-50 transition ${open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
                 }`}
         >
-            {/* Overlay */}
             <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" />
 
-            {/* Sidebar */}
             <div
                 ref={sidebarRef}
                 className={`absolute left-0 top-0 h-full w-[85%] max-w-sm bg-grey-10 border-r border-grey-15/30
-        transition-transform duration-300 ${open ? "translate-x-0" : "-translate-x-full"
-                    }`}
+        transition-transform duration-300 ${open ? "translate-x-0" : "-translate-x-full"}`}
             >
-                {/* Header */}
                 <div className="flex items-center justify-between px-6 py-5">
                     <span className="text-lg font-semibold text-white"></span>
                     <button
@@ -82,7 +78,6 @@ export default function MobileSidebar({ open, onClose, links }: MobileSidebarPro
                     </button>
                 </div>
 
-                {/* Links */}
                 <div className="px-6 mt-4">
                     <ul className="flex flex-col gap-6">
                         {links.map((link) => {
@@ -92,9 +87,7 @@ export default function MobileSidebar({ open, onClose, links }: MobileSidebarPro
                                     <Link
                                         href={link.href}
                                         onClick={onClose}
-                                        className={`text-lg font-medium transition ${active
-                                            ? "text-brand-60"
-                                            : "text-white/80 hover:text-white"
+                                        className={`text-lg font-medium transition ${active ? "text-brand-60" : "text-white/80 hover:text-white"
                                             }`}
                                     >
                                         {link.name}
