@@ -8,7 +8,9 @@ Estatein demonstrates scalable frontend architecture, reusable component design,
 
 ## 🚀 Live Demo
 
-(Add your deployed link here if available)
+```bash
+https://estateiin.netlify.app/
+```
 
 ## 🚀 Project Overview
 
@@ -132,15 +134,15 @@ Estatein uses a hybrid rendering approach.
 
 Pages such as:
 
-- ``` / ```
-- ``` /about ```
-- ``` /services ```
-- ``` /contact ```
+- `/`
+- `/about`
+- `/services`
+- `/contact`
 
 are statically generated for optimal performance.
 
-### Dynamic Property Pages ( ``` /properties/[id] ```)
- 
+### Dynamic Property Pages ( `/properties/[id]`)
+
 Uses dynamic routing with static or server-side rendering depending on data strategy.
 
 This ensures:
@@ -163,24 +165,28 @@ The project includes:
 - Structured data (where applicable)
 
 ## ⚡ Performance Optimizations
+
 Core Web Vitals were considered during development.
 
 ### LCP (Largest Contentful Paint)
+
 - Optimized hero images
 - next/image used throughout
 - Priority loading for above-the-fold images
 
 ### CLS (Cumulative Layout Shift)
+
 - Explicit image dimensions
 - Stable layout structure across breakpoints
 
 ### INP (Interaction to Next Paint)
+
 - Minimal client-side JavaScript
 - Lightweight components
 - Efficient re-renders
 
-
 ### Additional Optimizations
+
 - Lazy-loaded images
 - Optimized static assets
 - Tailwind utility-first styling for reduced CSS overhead
@@ -188,11 +194,13 @@ Core Web Vitals were considered during development.
 ### 📱 Responsive Design
 
 Built with a mobile-first approach using:
+
 - CSS Grid
 - Flexbox
 - Tailwind responsive breakpoints
 
 Fully optimized for:
+
 - Mobile
 - Tablet
 - Desktop
@@ -282,6 +290,7 @@ Estatein/
 ---
 
 ## 📊 Engineering Highlights
+
 - Next.js App Router architecture
 - Dynamic route handling
 - Modular component design
