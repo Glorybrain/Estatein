@@ -263,7 +263,7 @@ through Estatein. Click "View Details" for more information.`,
                                         <div className="flex items-center justify-between">
                                             <div className="flex flex-col justify-between">
                                                 <span className="text-sm lg:text-base text-grey-60">
-                                                    {p.priceLabel ?? "Price"}
+                                                    Price
                                                 </span>
                                                 <span className="text-lg text-white lg:text-xl">{p.price}</span>
                                             </div>
