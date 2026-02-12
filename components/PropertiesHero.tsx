@@ -45,9 +45,11 @@ const DEFAULT_FILTERS: Filter[] = [
         label: "Location",
         icon: MapPinIcon,
         options: [
-            { label: "Metropolis", value: "metropolis" },
-            { label: "Downtown", value: "downtown" },
-            { label: "Uptown", value: "uptown" },
+            { label: "Malibu, California", value: "malibu-california" },
+            { label: "New York, USA", value: "new-york-usa" },
+            { label: "Colorado, USA", value: "colorado-usa" },
+            { label: "Dubai, UAE", value: "dubai-uae" },
+            { label: "Geneva, Switzerland", value: "geneva-switzerland" },
         ],
     },
     {

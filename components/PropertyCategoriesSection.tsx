@@ -5,6 +5,7 @@ import Link from "next/link";
 import * as React from "react";
 import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/24/outline";
 import SectionHeader from "./SectionHeader";
+import { PROPERTIES } from "@/data/properties";
 
 export type PropertyCategoryCard = {
     id: string;
@@ -16,50 +17,10 @@ export type PropertyCategoryCard = {
     description: string;
     price: string;
 
-    location?: string; // optional (nice to pass to details later)
-    href?: string;     // should be /properties/<id>
+    location?: string;
+    href?: string;
     ctaText?: string;
 };
-
-const FALLBACK: PropertyCategoryCard[] = [
-    {
-        id: "seaside-serenity-villa",
-        imageSrc: "/properties/property1.png",
-        imageAlt: "Seaside Serenity Villa",
-        badge: "Coastal Escapes - Where Waves Beckon",
-        title: "Seaside Serenity Villa",
-        description: "Wake up to the soothing melody of waves. This beachfront villa offers...",
-        price: "$1,250,000",
-        location: "Malibu, California",
-        href: "/properties/seaside-serenity-villa",
-        ctaText: "View Property Details",
-    },
-    {
-        id: "metropolitan-haven",
-        imageSrc: "/properties/property2.png",
-        imageAlt: "Metropolitan Haven",
-        badge: "Urban Oasis - Life in the Heart of the City",
-        title: "Metropolitan Haven",
-        description: "Immerse yourself in the energy of the city. This modern apartment in the heart...",
-        price: "$650,000",
-        location: "New York, USA",
-        href: "/properties/metropolitan-haven",
-        ctaText: "View Property Details",
-    },
-    {
-        id: "rustic-retreat-cottage",
-        imageSrc: "/properties/property3.png",
-        imageAlt: "Rustic Retreat Cottage",
-        badge: "Countryside Charm - Escape to Nature’s Embrace",
-        title: "Rustic Retreat Cottage",
-        description: "Find tranquility in the countryside. This charming cottage is nestled amidst rolling hills...",
-        price: "$350,000",
-        location: "Colorado, USA",
-        href: "/properties/rustic-retreat-cottage",
-        ctaText: "View Property Details",
-    },
-];
-
 
 type Props = {
     eyebrowSrc?: string;
@@ -68,10 +29,10 @@ type Props = {
     ctaHref?: string;
     ctaText?: string;
 
+    // optional override (if you ever want to pass custom cards)
     items?: PropertyCategoryCard[];
 
-    // slider
-    perPage?: number; // desktop per page (default 3)
+    perPage?: number;
 };
 
 function clamp(n: number, min: number, max: number) {
@@ -81,21 +42,43 @@ function pad2(n: number) {
     return String(n).padStart(2, "0");
 }
 
+function badgeForProperty(id: string) {
+    if (id.includes("seaside")) return "Coastal Escapes - Where Waves Beckon";
+    if (id.includes("metropolitan")) return "Urban Oasis - Life in the Heart of the City";
+    if (id.includes("rustic")) return "Countryside Charm - Escape to Nature’s Embrace";
+    if (id.includes("penthouse")) return "Skyline Living - Elevated Luxury Above the City";
+    if (id.includes("mansion")) return "Elite Estates - Space, Prestige & Privacy";
+    return "Featured Collection - Find Your Perfect Home";
+}
+
+function toCategoryCards() {
+    return PROPERTIES.map((p) => ({
+        id: p.id,
+        imageSrc: p.imageSrc,
+        imageAlt: p.imageAlt ?? p.title,
+
+        badge: badgeForProperty(p.id),
+        title: p.title,
+        description: p.description ?? "",
+        price: p.price,
+
+        location: p.location,
+        href: `/properties/${p.id}`,
+        ctaText: "View Property Details",
+    })) satisfies PropertyCategoryCard[];
+}
+
 export default function PropertyCategoriesSection({
     eyebrowSrc = "/Abstract Design3.svg",
     title = "Discover a World of Possibilities",
     subtitle = "Our portfolio of properties is as diverse as your dreams. Explore the following categories to find the perfect property that resonates with your vision of home",
-    ctaHref = "/properties",
-    ctaText = "View All Properties",
     items,
     perPage = 3,
 }: Props) {
-    const list = React.useMemo(
-        () => (items?.length ? items : FALLBACK),
-        [items]
-    );
+    const list = React.useMemo(() => {
+        return items ?? toCategoryCards();
+    }, [items]);
 
-    // responsive per page: 1 mobile, 2 tablet, 3 desktop
     const [responsivePerPage, setResponsivePerPage] = React.useState(perPage);
 
     React.useEffect(() => {
@@ -116,6 +99,10 @@ export default function PropertyCategoriesSection({
     const [page, setPage] = React.useState(0);
 
     React.useEffect(() => {
+        setPage(0);
+    }, [items, responsivePerPage]);
+
+    React.useEffect(() => {
         setPage((p) => clamp(p, 0, totalPages - 1));
     }, [totalPages]);
 
@@ -125,10 +112,7 @@ export default function PropertyCategoriesSection({
     const goPrev = () => setPage((p) => clamp(p - 1, 0, totalPages - 1));
     const goNext = () => setPage((p) => clamp(p + 1, 0, totalPages - 1));
 
-    const pageText = {
-        current: pad2(page + 1),
-        total: pad2(totalPages),
-    };
+    const pageText = { current: pad2(page + 1), total: pad2(totalPages) };
 
     const [expandedId, setExpandedId] = React.useState<string | null>(null);
 
@@ -143,7 +127,6 @@ export default function PropertyCategoriesSection({
                         priority
                     />
 
-                    {/* Cards */}
                     <div className="space-y-7.5 lg:space-y-20 xl:space-y-12.5">
                         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5 xl:gap-7.5">
                             {visible.map((item, idx) => (
@@ -159,7 +142,6 @@ export default function PropertyCategoriesSection({
                             ))}
                         </div>
 
-                        {/* Footer bar */}
                         <div className="pt-4 border-t border-grey-15">
                             <div className="flex items-center justify-between">
                                 <span className="font-medium text-grey-60">
@@ -168,11 +150,7 @@ export default function PropertyCategoriesSection({
                                 </span>
 
                                 <div className="flex items-center gap-2.5">
-                                    <ArrowButton
-                                        dir="prev"
-                                        onClick={goPrev}
-                                        disabled={page === 0}
-                                    />
+                                    <ArrowButton dir="prev" onClick={goPrev} disabled={page === 0} />
                                     <ArrowButton
                                         dir="next"
                                         onClick={goNext}
@@ -200,63 +178,57 @@ function CategoryCard({
     expanded: boolean;
     onToggle: () => void;
 }) {
-    // if you later add fullText, use it when expanded
-    const text = item.description;
+    const href = item.href ?? `/properties/${item.id}`;
 
     return (
         <article className="h-full rounded-xl border border-grey-15 bg-grey-8 p-5 lg:p-6 xl:p-7.5">
-            {/* Image */}
-            <div className="relative w-full overflow-hidden h-52 rounded-xl bg-grey-10 lg:h-56 xl:h-60">
-                <Image
-                    src={item.imageSrc}
-                    alt={item.imageAlt ?? item.title}
-                    fill
-                    className="object-cover"
-                    priority={priority}
-                />
-            </div>
+            <div className="block group">
+                <div className="relative w-full overflow-hidden h-52 rounded-xl bg-grey-10 lg:h-56 xl:h-60">
+                    <Image
+                        src={item.imageSrc}
+                        alt={item.imageAlt ?? item.title}
+                        fill
+                        className="object-cover transition group-hover:scale-[1.02]"
+                        priority={priority}
+                    />
+                </div>
 
-            {/* badge */}
-            <div className="mt-4">
-                <span className="inline-flex px-3 py-1 text-xs font-medium border rounded-full border-grey-15 bg-grey-10 text-white/85">
-                    {item.badge}
-                </span>
-            </div>
+                <div className="mt-4">
+                    <span className="inline-flex px-3 py-1 text-xs font-medium border rounded-full border-grey-15 bg-grey-10 text-white/85">
+                        {item.badge}
+                    </span>
+                </div>
 
-            {/* title */}
-            <h3 className="mt-4 text-lg font-semibold text-white lg:text-xl">
-                {item.title}
-            </h3>
+                <h3 className="mt-4 text-lg font-semibold text-white lg:text-xl">
+                    {item.title}
+                </h3>
 
-            {/* description */}
-            <p
-                className={[
-                    "mt-2 text-sm font-medium leading-relaxed text-grey-60",
-                    !expanded ? "line-clamp-2" : "",
-                ].join(" ")}
-            >
-                {text} {" "}
-
-                <button
-                    type="button"
-                    onClick={onToggle}
-                    className="mt-2 text-sm font-medium text-white underline underline-offset-2"
+                <p
+                    className={[
+                        "mt-2 text-sm font-medium leading-relaxed text-grey-60",
+                        !expanded ? "line-clamp-2" : "",
+                    ].join(" ")}
                 >
-                    {expanded ? "Show Less" : "Read More"}
-                </button>
-            </p>
+                    {item.description}
+                </p>
+            </div>
 
-            {/* price + button */}
+            <button
+                type="button"
+                onClick={onToggle}
+                className="mt-2 text-sm font-medium text-white underline underline-offset-2"
+            >
+                {expanded ? "Show Less" : "Read More"}
+            </button>
+
             <div className="flex items-end justify-between gap-4 mt-6">
                 <div>
                     <div className="text-xs font-medium text-grey-60">Price</div>
-                    <div className="mt-1 text-lg font-semibold text-white">
-                        {item.price}
-                    </div>
+                    <div className="mt-1 text-lg font-semibold text-white">{item.price}</div>
                 </div>
 
                 <Link
-                    href={item.href ?? `/properties/${item.id}`}
+                    href={href}
                     className="inline-flex items-center justify-center px-5 text-sm font-medium text-white transition h-11 rounded-xl bg-brand-60 hover:opacity-95"
                 >
                     {item.ctaText ?? "View Property Details"}

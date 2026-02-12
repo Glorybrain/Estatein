@@ -9,6 +9,8 @@ import {
     BuildingOfficeIcon,
 } from "@heroicons/react/24/outline";
 import SectionHeader from "./SectionHeader";
+import { BuildingStorefrontIcon, TableCellsIcon } from "@heroicons/react/24/solid";
+import { PROPERTIES } from "@/data/properties";
 
 type Amenity = {
     label: string;
@@ -51,11 +53,10 @@ const FALLBACK_PROPERTIES: FeaturedProperty[] = [
         imageAlt: "Seaside Serenity Villa",
         amenities: [
             { label: "4-Bedroom", icon: BuildingOfficeIcon },
-            { label: "3-Bathroom", icon: BuildingOfficeIcon },
-            { label: "Villa", icon: BuildingOfficeIcon },
+            { label: "3-Bathroom", icon: BuildingStorefrontIcon },
+            { label: "Villa", icon: TableCellsIcon },
         ],
         price: "$550,000",
-        detailsHref: "/properties",
     },
     {
         id: "p2",
@@ -67,11 +68,10 @@ const FALLBACK_PROPERTIES: FeaturedProperty[] = [
         imageAlt: "Urban Luxury Apartment",
         amenities: [
             { label: "2-Bedroom", icon: BuildingOfficeIcon },
-            { label: "2-Bathroom", icon: BuildingOfficeIcon },
-            { label: "Villa", icon: BuildingOfficeIcon },
+            { label: "2-Bathroom", icon: BuildingStorefrontIcon },
+            { label: "Villa", icon: TableCellsIcon },
         ],
         price: "$320,000",
-        detailsHref: "/properties",
     },
     {
         id: "p3",
@@ -83,11 +83,10 @@ const FALLBACK_PROPERTIES: FeaturedProperty[] = [
         imageAlt: "Modern Family House",
         amenities: [
             { label: "5-Bedroom", icon: BuildingOfficeIcon },
-            { label: "4-Bathroom", icon: BuildingOfficeIcon },
-            { label: "House", icon: BuildingOfficeIcon },
+            { label: "4-Bathroom", icon: BuildingStorefrontIcon },
+            { label: "House", icon: TableCellsIcon },
         ],
         price: "$780,000",
-        detailsHref: "/properties",
     },
     {
         id: "p4",
@@ -99,11 +98,10 @@ const FALLBACK_PROPERTIES: FeaturedProperty[] = [
         imageAlt: "Modern Family House",
         amenities: [
             { label: "5-Bedroom", icon: BuildingOfficeIcon },
-            { label: "4-Bathroom", icon: BuildingOfficeIcon },
-            { label: "House", icon: BuildingOfficeIcon },
+            { label: "4-Bathroom", icon: BuildingStorefrontIcon },
+            { label: "House", icon: TableCellsIcon },
         ],
         price: "$780,000",
-        detailsHref: "/properties",
     },
 ];
 
@@ -127,7 +125,7 @@ through Estatein. Click "View Details" for more information.`,
     perPage = 3,
 }: Props) {
     const items = useMemo(
-        () => (properties?.length ? properties : FALLBACK_PROPERTIES),
+        () => (properties?.length ? properties : PROPERTIES),
         [properties]
     );
 
@@ -197,76 +195,85 @@ through Estatein. Click "View Details" for more information.`,
                         >
                             {visible.map((p, idx) => {
                                 const isExpanded = expandedId === p.id;
+                                const href = `/properties/${p.id}`;
 
                                 return (
                                     <article
                                         key={p.id}
                                         className="flex flex-col p-6 border rounded-xl gap-y-4 bg-grey-8 border-grey-15 xl:p-7 lg:p-6"
                                     >
-                                        <div className="w-full h-52.5 bg-white rounded-[10px] overflow-hidden lg:h-63.75 relative">
-                                            {p.imageSrc ? (
-                                                <Image
-                                                    src={p.imageSrc}
-                                                    alt={p.imageAlt ?? p.title}
-                                                    fill
-                                                    className="object-cover"
-                                                    priority={page === 0 && idx === 0}
-                                                />
-                                            ) : null}
-                                        </div>
+                                        <div className="block group">
+                                            <div className="w-full h-52.5 bg-white rounded-[10px] overflow-hidden lg:h-63.75 relative">
+                                                {p.imageSrc ? (
+                                                    <Image
+                                                        src={p.imageSrc}
+                                                        alt={p.imageAlt ?? p.title}
+                                                        fill
+                                                        className="object-cover transition group-hover:scale-[1.02]"
+                                                        priority={page === 0 && idx === 0}
+                                                    />
+                                                ) : null}
+                                            </div>
 
-                                        <div className="flex flex-col gap-4">
-                                            <div className="flex flex-col gap-0.5 lg:gap-1">
-                                                <h4 className="text-lg text-white">{p.title}</h4>
+                                            <div className="flex flex-col gap-4 mt-4">
+                                                <div className="flex flex-col gap-0.5 lg:gap-1">
+                                                    <h4 className="text-lg text-white">{p.title}</h4>
 
-                                                <p className="text-sm lg:text-base text-grey-60">
-                                                    {isExpanded && p.description ? p.description : p.excerpt}{" "}
+                                                    <div>
+
+                                                    </div>
+                                                    <p
+                                                        className={[
+                                                            "text-sm lg:text-base text-grey-60",
+                                                            !isExpanded ? "line-clamp-2" : "",
+                                                        ].join(" ")}
+                                                    >
+                                                        {p.description ?? ""}
+                                                    </p>
+
                                                     {p.description ? (
                                                         <button
                                                             type="button"
-                                                            onClick={() =>
-                                                                setExpandedId((cur) => (cur === p.id ? null : p.id))
-                                                            }
-                                                            className="font-medium text-white underline"
+                                                            onClick={() => setExpandedId((cur) => (cur === p.id ? null : p.id))}
+                                                            className="mt-2 text-sm font-medium text-left text-white underline underline-offset-2 lg:text-base"
                                                         >
                                                             {isExpanded ? "Show Less" : "Read More"}
                                                         </button>
                                                     ) : null}
-                                                </p>
-                                            </div>
 
-                                            <div className="flex flex-wrap gap-1.5">
-                                                {p.amenities.map((a, i) => {
-                                                    const Icon = a.icon ?? BuildingOfficeIcon;
-                                                    return (
-                                                        <div
-                                                            key={`${p.id}-amenity-${i}`}
-                                                            className="border border-grey-15 flex text-sm rounded-full items-center gap-1 bg-grey-10 py-1.5 px-3"
-                                                        >
-                                                            <Icon className="w-5 h-5 text-white" />
-                                                            <span>{a.label}</span>
-                                                        </div>
-                                                    );
-                                                })}
-                                            </div>
-
-                                            <div className="flex items-center justify-between">
-                                                <div className="flex flex-col justify-between">
-                                                    <span className="text-sm lg:text-base text-grey-60">
-                                                        {p.priceLabel ?? "Price"}
-                                                    </span>
-                                                    <span className="text-lg text-white lg:text-xl">
-                                                        {p.price}
-                                                    </span>
                                                 </div>
 
-                                                <Link
-                                                    href={p.detailsHref ?? "/properties"}
-                                                    className="bg-brand-60 rounded-lg py-3.5 px-5 text-white text-sm font-medium"
-                                                >
-                                                    View Property Details
-                                                </Link>
+                                                <div className="flex flex-wrap gap-1.5">
+                                                    {p.amenities.map((a, i) => {
+                                                        const Icon = a.icon ?? BuildingOfficeIcon;
+                                                        return (
+                                                            <div
+                                                                key={`${p.id}-amenity-${i}`}
+                                                                className="border border-grey-15 flex text-sm rounded-full items-center gap-1 bg-grey-10 py-1.5 px-3"
+                                                            >
+                                                                <Icon className="w-5 h-5 text-white" />
+                                                                <span>{a.label}</span>
+                                                            </div>
+                                                        );
+                                                    })}
+                                                </div>
                                             </div>
+                                        </div>
+
+                                        <div className="flex items-center justify-between">
+                                            <div className="flex flex-col justify-between">
+                                                <span className="text-sm lg:text-base text-grey-60">
+                                                    {p.priceLabel ?? "Price"}
+                                                </span>
+                                                <span className="text-lg text-white lg:text-xl">{p.price}</span>
+                                            </div>
+
+                                            <Link
+                                                href={href}
+                                                className="bg-brand-60 rounded-lg py-3.5 px-5 text-white text-sm font-medium"
+                                            >
+                                                View Property Details
+                                            </Link>
                                         </div>
                                     </article>
                                 );
