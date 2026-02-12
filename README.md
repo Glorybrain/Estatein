@@ -4,8 +4,6 @@ A modern, dark-themed real estate web application built with Next.js (App Router
 
 Estatein demonstrates scalable frontend architecture, reusable component design, SEO optimization, performance best practices, and accessibility compliance.
 
----
-
 ## 🖇️ Live Demo
 
 ```bash
@@ -31,8 +29,6 @@ The application was built with a strong focus on:
 - Accessibility best practices
 - Scalable rendering strategy
 
----
-
 ## 📁 Features
 
 - Fully Responsive Design (Mobile, Tablet, Desktop)
@@ -43,8 +39,6 @@ The application was built with a strong focus on:
 - Optimized routing using Next.js App Router
 - Production-ready structure
 
----
-
 ## 🛠 Tech Stack
 
 - Next.js (App Router)
@@ -52,8 +46,6 @@ The application was built with a strong focus on:
 - TypeScript
 - Tailwind CSS
 - Netlify (Deployment)
-
----
 
 ## 🌐 Routing
 
@@ -249,8 +241,6 @@ npm run build
 .next
 ```
 
----
-
 ## 🏗 Project Structure
 
 ```
@@ -287,8 +277,6 @@ Estatein/
 └─ README.md
 ```
 
----
-
 ## 📊 Engineering Highlights
 
 - Next.js App Router architecture
@@ -301,8 +289,6 @@ Estatein/
 - Clean TypeScript configuration
 - Production-ready Tailwind setup
 
----
-
 ## 📜 License
 
 Copyright (c) 2026 Kotin Glory.
@@ -310,8 +296,6 @@ All rights reserved.
 
 This code is submitted solely for assessment purposes.
 No rights are granted for commercial use, redistribution, or modification without written permission.
-
----
 
 ## Author
 
