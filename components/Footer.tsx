@@ -107,7 +107,7 @@ export default function Footer({
 
                             {/* Email input (kept your SVGs + styles) */}
                             <form
-                                className="mt-7 w-full max-w-[360px]"
+                                className="w-full mt-7 max-w-90"
                                 onSubmit={(e) => e.preventDefault()}
                             >
                                 <div className="flex items-center gap-2 rounded-xl border border-grey-15 bg-grey-8 px-4 py-2.5">
@@ -213,7 +213,6 @@ export default function Footer({
                                         key={s.label}
                                         href={s.href}
                                         aria-label={s.label}
-                                        mapped
                                         className="flex items-center justify-center w-12 h-12 transition border rounded-full border-grey-15 bg-grey-8 text-white/90 hover:bg-grey-15 hover:text-white"
                                     >
                                         <span className="text-base">{s.icon}</span>
