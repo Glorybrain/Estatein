@@ -213,6 +213,8 @@ export default function Footer({
                                         key={s.label}
                                         href={s.href}
                                         aria-label={s.label}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
                                         className="flex items-center justify-center w-12 h-12 transition border rounded-full border-grey-15 bg-grey-8 text-white/90 hover:bg-grey-15 hover:text-white"
                                     >
                                         <span className="text-base">{s.icon}</span>

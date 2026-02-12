@@ -1,4 +1,3 @@
-// components/PropertyManagementCategoriesSection.tsx
 "use client";
 
 import Image from "next/image";
