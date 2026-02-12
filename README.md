@@ -1,36 +1,312 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🏡 Estatein
 
-## Getting Started
+A modern, dark-themed real estate web application built with Next.js (App Router) and Tailwind CSS.
 
-First, run the development server:
+Estatein demonstrates scalable frontend architecture, reusable component design, SEO optimization, performance best practices, and accessibility compliance.
+
+---
+
+## 🚀 Live Demo
+
+(Add your deployed link here if available)
+
+## 🚀 Project Overview
+
+Estatein provides a seamless browsing experience for real estate listings. Users can:
+
+- Browse property listings
+- View dynamic property detail pages
+- Explore image galleries and pricing details
+- Submit property inquiries
+- Navigate through a fully responsive interface
+
+The application was built with a strong focus on:
+
+- Clean architecture
+- Component reusability
+- SEO-first implementation
+- Core Web Vitals optimization
+- Accessibility best practices
+- Scalable rendering strategy
+
+---
+
+## 📁 Features
+
+- Fully Responsive Design (Mobile, Tablet, Desktop)
+- Property Listing Grid
+- Dynamic Property Details Page (`/properties/[id]`)
+- Reusable and modular components
+- Modern UI built with Tailwind CSS
+- Optimized routing using Next.js App Router
+- Production-ready structure
+
+---
+
+## 🛠 Tech Stack
+
+- Next.js (App Router)
+- React
+- TypeScript
+- Tailwind CSS
+- Netlify (Deployment)
+
+---
+
+## 🌐 Routing
+
+The project uses Next.js App Router.
+
+| Route              | Description                   |
+| ------------------ | ----------------------------- |
+| `/`                | Home page                     |
+| `/about`           | About page                    |
+| `/services`        | Services page                 |
+| `/contact`         | Contact page                  |
+| `/properties`      | Property listing page         |
+| `/properties/[id]` | Dynamic property details page |
+
+Dynamic routing ensures clean and SEO-friendly URLs:
+
+```bash
+/properties/metropolitan-haven
+```
+
+## 🧩 Component Architecture
+
+The application follows a modular, section-based component structure.
+
+### Layout Components
+
+- Navbar
+- MobileSidebar
+- Footer
+- Banner
+
+### Hero Components
+
+- HomeHero
+- PageHero
+- PropertiesHero
+- PropertyDetailsHero
+- AboutHero
+
+### Property Components
+
+- PropertyGallery
+- PropertyDetailsInfoSection
+- PropertyPricingDetailsSection
+- PropertyInquirySection
+- PropertyDetailsInquirySection
+- PropertyCategoriesSection
+- FeaturedPropertiesSection
+- Content Sections
+- AchievementsSection
+- ExperienceStepsSection
+- OurValuesSection
+- InvestmentAdvisorySection
+- ServiceCategoriesSection
+- TeamSection
+- OfficeLocationsSection
+- ValuedClientsSection
+- UI Components
+- SectionHeader
+- FaqCard
+- FaqSection
+- TestimonialCard
+- TestimonialSection
+- FeatureStrip
+
+### This structure improves:
+
+- Maintainability
+- Reusability
+- Scalability
+- Readability
+
+## ⚙ Rendering Strategy
+
+Estatein uses a hybrid rendering approach.
+
+### Static Pages
+
+Pages such as:
+
+- ``` / ```
+- ``` /about ```
+- ``` /services ```
+- ``` /contact ```
+
+are statically generated for optimal performance.
+
+### Dynamic Property Pages ( ``` /properties/[id] ```)
+ 
+Uses dynamic routing with static or server-side rendering depending on data strategy.
+
+This ensures:
+
+- SEO-friendly pre-rendered HTML
+- Fast load times
+- Scalable performance
+
+## 🔍 SEO Implementation
+
+The project includes:
+
+- Semantic HTML structure (header, main, section, article)
+- Proper heading hierarchy
+- Clean URL structure
+- Internal linking between pages
+- Optimized image alt attributes
+- Dynamic metadata per page
+- Open Graph support
+- Structured data (where applicable)
+
+## ⚡ Performance Optimizations
+Core Web Vitals were considered during development.
+
+### LCP (Largest Contentful Paint)
+- Optimized hero images
+- next/image used throughout
+- Priority loading for above-the-fold images
+
+### CLS (Cumulative Layout Shift)
+- Explicit image dimensions
+- Stable layout structure across breakpoints
+
+### INP (Interaction to Next Paint)
+- Minimal client-side JavaScript
+- Lightweight components
+- Efficient re-renders
+
+
+### Additional Optimizations
+- Lazy-loaded images
+- Optimized static assets
+- Tailwind utility-first styling for reduced CSS overhead
+
+### 📱 Responsive Design
+
+Built with a mobile-first approach using:
+- CSS Grid
+- Flexbox
+- Tailwind responsive breakpoints
+
+Fully optimized for:
+- Mobile
+- Tablet
+- Desktop
+
+## 🧪 Installation
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/your-username/estatein.git
+```
+
+### 2. Navigate to the Project Directory
+
+```bash
+cd estatein
+```
+
+### 3. Install Dependencies
+
+```bash
+npm install
+```
+
+### 4. Start Development Server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open your browser and visit:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 🏭 Build Command:
 
-## Learn More
+```bash
+npm run build
+```
 
-To learn more about Next.js, take a look at the following resources:
+### Publish Directory:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+.next
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 🏗 Project Structure
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```
+Estatein/
+├─ app/
+│  ├─ about/
+│  ├─ contact/
+│  ├─ properties/
+│  │  ├─ [id]/
+│  │  │  └─ page.tsx
+│  │  └─ page.tsx
+│  ├─ services/
+│  ├─ layout.tsx
+│  ├─ page.tsx
+│  └─ globals.css
+│
+├─ components/
+│  ├─ Navbar.tsx
+│  ├─ Footer.tsx
+│  ├─ HomeHero.tsx
+│  ├─ FeaturedPropertiesSection.tsx
+│  ├─ PropertyDetailsInfoSection.tsx
+│  ├─ PropertyGallery.tsx
+│  └─ ...
+│
+├─ public/
+│  ├─ properties/
+│  ├─ avatars/
+│  └─ ...
+│
+├─ tailwind.config.js
+├─ next.config.ts
+├─ tsconfig.json
+└─ README.md
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## 📊 Engineering Highlights
+- Next.js App Router architecture
+- Dynamic route handling
+- Modular component design
+- Hybrid rendering strategy
+- SEO-first implementation
+- Optimized image handling
+- Scalable folder structure
+- Clean TypeScript configuration
+- Production-ready Tailwind setup
+
+---
+
+## 📜 License
+
+Copyright (c) 2026 Kotin Glory.
+All rights reserved.
+
+This code is submitted solely for assessment purposes.
+No rights are granted for commercial use, redistribution, or modification without written permission.
+
+---
+
+## Author
+
+Kotin Glory
+Frontend Developer
+
+GitHub: https://github.com/Glorybrain
