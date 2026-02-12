@@ -202,7 +202,7 @@ export default function Footer({
 
             {/* BOTTOM */}
             <div className="border-t border-grey-15 bg-grey-10">
-                <div className="px-4 py-6 md:px-6 xl:px-8">
+                <div className="px-4 py-4 md:px-6 xl:px-8">
                     <div className="w-full mx-auto lg:w-12/12 xl:w-11/12">
                         {/* ✅ Mobile: center stacked | Desktop: row */}
                         <div className="flex flex-col items-center justify-center gap-5 sm:flex-row sm:justify-between">
