@@ -22,7 +22,13 @@ export default function ContactPage() {
                 <FeatureStrip />
             </div>
             <ContactSection />
-            <OfficeLocationsSection />
+            <OfficeLocationsSection
+                tabs={[
+                    { id: "all", label: "All" },
+                    { id: "regional", label: "Regional" },
+                    { id: "international", label: "International" },
+                ]}
+            />
             <ExploreWorldSection />
             <CallToActionSection />
         </>
