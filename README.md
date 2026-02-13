@@ -183,6 +183,17 @@ Core Web Vitals were considered during development.
 - Optimized static assets
 - Tailwind utility-first styling for reduced CSS overhead
 
+### ♿ Accessibility
+
+Estatein follows accessibility best practices:
+
+- Keyboard-navigable interface
+- Visible focus states
+- Proper label associations
+- ARIA attributes where necessary
+- High-contrast dark theme compliance
+- Screen reader-friendly markup
+
 ### 📱 Responsive Design
 
 Built with a mobile-first approach using:
@@ -276,6 +287,31 @@ Estatein/
 ├─ tsconfig.json
 └─ README.md
 ```
+
+## SEO Checklist
+
+- ✅ Semantic HTML structure (header, main, section, article)
+- ✅ Proper heading hierarchy (H1–H3)
+- ✅ Clean URLs with internal linking (listing → detail pages
+- ✅ Meta tags (title + description) per page
+- ✅ Open Graph tags for sharing (where applicable)
+- ✅ Image alt attributes for accessibility and SEO
+- ✅ JSON-LD structured data
+
+## Performance Checklist
+
+- ✅ Next.js Image Optimization (next/image)
+- ✅ Lazy loading for non-critical images
+- ✅ Prevent CLS by reserving image dimensions
+- ✅ Optimized above-the-fold content for better LCP
+- ✅ Reduced client-side JS where possible
+- ✅ Mobile-first responsive layouts (improves UX + CWV)
+
+### Core Web Vitals considered:
+
+- LCP (Largest Contentful Paint)
+- CLS (Cumulative Layout Shift)
+- INP (Interaction to Next Paint)
 
 ## 📊 Engineering Highlights
 
