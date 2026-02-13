@@ -50,7 +50,7 @@ export default function Hero() {
                         </div>
 
                         <svg
-                            className="absolute inset-0 transition-transform duration-700 group-hover:animate-spin-slow"
+                            className="absolute inset-0 transition-transform duration-700 animate-spin-slow"
                             viewBox="0 0 100 100"
                         >
                             <defs>
@@ -169,7 +169,7 @@ export default function Hero() {
                                 </div>
 
                                 <svg
-                                    className="absolute inset-0 transition-transform duration-700 group-hover:animate-spin-slow"
+                                    className="absolute inset-0 transition-transform duration-700 animate-spin-slow"
                                     viewBox="0 0 100 100"
                                 >
                                     <defs>
@@ -241,7 +241,7 @@ export default function Hero() {
                                 </div>
 
                                 <svg
-                                    className="absolute inset-0 transition-transform duration-700 group-hover:animate-spin-slow"
+                                    className="absolute inset-0 transition-transform duration-700 animate-spin-slow"
                                     viewBox="0 0 100 100"
                                 >
                                     <defs>
